@@ -2,53 +2,16 @@ import React, { Component } from "react";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { SearchResults } from "../SearchResults/SearchResults";
 import { Playlist } from "../Playlist/Playlist";
+import Spotify from "../../util/Spotify";
 import "./App.css";
 
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults: [
-        {
-          id: 11,
-          name: "AName",
-          artist: "AnArtist",
-          album: "Album"
-        },
-        {
-          id: 12,
-          name: "BName",
-          artist: "BAnArtist",
-          album: "BAlbum"
-        },
-        {
-          id: 13,
-          name: "CName",
-          artist: "CnArtist",
-          album: "CAlbum"
-        }
-      ],
-      playlistName: "The best playlist",
-      playlistTracks: [
-        {
-          id: 14,
-          name: "AName",
-          artist: "Jackson",
-          album: "Album"
-        },
-        {
-          id: 15,
-          name: "BName",
-          artist: "Moshu",
-          album: "BAlbum"
-        },
-        {
-          id: 16,
-          name: "CName",
-          artist: "Bon Jovi",
-          album: "CAlbum"
-        }
-      ]
+      searchResults: [],
+      playlistName: "New Playlist",
+      playlistTracks: []
     };
     this.addTrack = this.addTrack.bind(this);
     this.removeTrack = this.removeTrack.bind(this);
@@ -85,11 +48,16 @@ export class App extends Component {
 
   savePlaylist() {
     const trackUris = this.state.playlistTracks.map(track => track.uri);
+    Spotify.savePlaylist(this.state.playlistName, trackUris).then(() =>
+      this.setState({ playlistName: "New Playlist", playlistTracks: [] })
+    );
   }
 
   //updates searchResults with a user's search results
   search(term) {
-    console.log(term);
+    Spotify.search(term).then(searchResults =>
+      this.setState({ searchResults: searchResults })
+    );
   }
 
   render() {
