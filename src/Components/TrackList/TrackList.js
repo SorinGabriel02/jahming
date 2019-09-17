@@ -4,15 +4,21 @@ import "./TrackList.css";
 
 export class TrackList extends Component {
   render() {
-    //map method that renders a set of Track components
     return (
       <div className="TrackList">
-        <Track />
-        <Track />
-        <Track />
+        {this.props.tracks &&
+          this.props.tracks.map(track => {
+            return (
+              <Track
+                key={track.id}
+                track={track}
+                onAdd={this.props.onAdd}
+                onRemove={this.props.onRemove}
+                isRemoval={this.props.isRemoval}
+              />
+            );
+          })}
       </div>
     );
   }
 }
-
-export default TrackList;
