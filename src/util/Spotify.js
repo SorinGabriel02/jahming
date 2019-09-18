@@ -1,5 +1,5 @@
 let accessToken;
-const clientId = "4e62d4d448b242788914756e4bc76e88";
+const clientId = process.env.REACT_APP_CLIENT_ID;
 const redirectUri = "http://localhost:3000/";
 
 // This module is a utility service to integration Jahming application with spotify APIs
