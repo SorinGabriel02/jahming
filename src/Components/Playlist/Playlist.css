@@ -14,8 +14,9 @@
 .Playlist input {
   width: 95%;
   text-align: center;
+  border: 0;
   background: whitesmoke;
-  border-bottom: 3px solid #6f6f6f;
+  border-bottom: 3px solid rgba(172, 71, 101, 0.836);
   font-family: "Poppins", sans-serif;
   font-size: 1.55rem;
   color: #6c41ec;
