@@ -7,14 +7,15 @@
 }
 
 .SearchBar input {
-  width: 287px;
+  width: 22rem;
   padding: 0.88rem 0;
-  border: 1px solid #fff;
-  border-radius: 3px;
-  margin-bottom: 2.22rem;
-  color: #010c3f;
+  border: 2px solid rgb(172, 71, 101);
+  border-radius: 5%;
+  margin-bottom: 2rem;
+  color: rgba(54, 32, 155, 0.938);
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 3px 2px 2px #000000;
 }
 
 .SearchBar input:focus {
@@ -26,7 +27,7 @@
   width: 8.11rem;
   padding: 0.77rem 0;
   border-radius: 54px;
-  background-color: #010c3f;
+  background-color: rgb(172, 71, 101);
   text-align: center;
   font-size: 0.833rem;
   transition: background-color 0.25s;

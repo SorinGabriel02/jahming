@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./SearchBar.css";
+import Spotify from "../../util/Spotify";
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -29,13 +30,19 @@ export class SearchBar extends Component {
     }
   }
 
+  handleClick() {
+    Spotify.getAccessToken();
+  }
+
   render() {
     return (
       <div className="SearchBar">
         <input
-          placeholder="Enter A Song, Album, or Artist"
+          autoFocus
+          placeholder="Song, Album, or Artist"
           onChange={this.handleTermChange}
           onKeyDown={this.handleEnter}
+          onClick={this.handleClick}
         />
         <button className="SearchButton" onClick={this.search}>
           SEARCH

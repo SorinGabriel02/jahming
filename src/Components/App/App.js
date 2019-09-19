@@ -18,20 +18,16 @@ export class App extends Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this);
     this.savePlaylist = this.savePlaylist.bind(this);
     this.search = this.search.bind(this);
+    Spotify.getAccessToken();
   }
   //method that adds tracks to the playlist
   addTrack(track) {
-    let tracks = this.state.playlistTracks;
-    /* long  if version
-    if (tracks.find(savedTrack => 
-      savedTrack.id === track.id)) {
+    let playlistTracks = this.state.playlistTracks;
+    if (playlistTracks.find(savedTrack => savedTrack.id === track.id)) {
       return;
-    } 
-    */
-    if (!tracks.includes(track.id)) {
-      tracks.unshift(track);
-      this.setState({ playlistTracks: tracks });
     }
+    playlistTracks.unshift(track);
+    this.setState({ playlistTracks: playlistTracks });
   }
 
   //method that removes tracks from the playlist
@@ -49,7 +45,7 @@ export class App extends Component {
   savePlaylist() {
     const trackUris = this.state.playlistTracks.map(track => track.uri);
     Spotify.savePlaylist(this.state.playlistName, trackUris).then(() =>
-      this.setState({ playlistName: "New Playlist", playlistTracks: [] })
+      this.setState({ playlistName: "Jahming Playlist", playlistTracks: [] })
     );
   }
 
@@ -60,12 +56,22 @@ export class App extends Component {
     );
   }
 
+  goSpotify() {
+    window.open("https://open.spotify.com/browse/featured");
+  }
+
   render() {
     return (
       <div>
-        <h1>
-          <span className="highlight">Jah</span>ming
-        </h1>
+        <div className="header">
+          <h1>
+            <span className="highlight">Jah</span>ming
+          </h1>
+          <h4 className="spotify" onClick={this.goSpotify}>
+            VISIT SPOTIFY
+          </h4>
+        </div>
+
         <div className="App">
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
