@@ -1,3 +1,5 @@
+An app that will let you search for tracks, albums or artists and help you create a new playlist on Spotify.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
